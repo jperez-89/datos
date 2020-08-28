@@ -3,11 +3,17 @@ import psycopg2
 from data.clsDatos import clsDatos
 
 class clsConexion():
-     # Declara las variables para la conexion
-     _servidor = 'localhost,1433' # Estoy utilizando Docker
-     _basedatos = 'datos'
-     _usuario = 'jperez'
+     # Declara las variables para la conexion con PostgreSQL
+     _servidor = 'PostgreSQL_Docker' # Estoy utilizando Docker
+     _basedatos = 'DatosPython'
+     _usuario = 'postgres'
      _contra = 'Vsmora1989'
+     
+     # Declara las variables para la conexion con SQL Server
+     # _servidor = 'localhost,1433' # Estoy utilizando Docker
+     # _basedatos = 'datos'
+     # _usuario = 'jperez'
+     # _contra = 'Vsmora1989'
 
      def __init__(self):
           pass
