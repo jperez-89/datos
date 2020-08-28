@@ -1,10 +1,11 @@
 #import pyodbc
 import psycopg2
+#import pg
 from data.clsDatos import clsDatos
 
 class clsConexion():
      # Declara las variables para la conexion con PostgreSQL
-     _servidor = 'PostgreSQL_Docker' # Estoy utilizando Docker
+     _servidor = 'localhost' # Estoy utilizando Docker
      _basedatos = 'DatosPython'
      _usuario = 'postgres'
      _contra = 'Vsmora1989'
@@ -22,7 +23,8 @@ class clsConexion():
           try:
                #Conexion con PostgreSQL
                _conex = psycopg2.connect(host=self._servidor, database=self._basedatos, user=self._usuario, password=self._contra)
-               
+               print(_conex)
+               #print('exito conex')
                #Conexion con Sql Server
                # _conex = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
                #                     'SERVER=' + self._servidor +
