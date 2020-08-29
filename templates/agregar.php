@@ -59,8 +59,8 @@
                     <td>{{ dato.Texto}}</td>
                     <td>{{ dato.Descripcion}}</td>
                     <td>
-                         <button class="btn btn-success btn-sm" onclick="modificar({{ dato.ID }});">Editar</button>
-                         <button class="btn btn-danger btn-sm" onclick="borrar({{ dato.ID }});">Borrar</button>
+                         <button class="btn btn-success btn-sm" onclick="modificar({ dato.ID });">Editar</button>
+                         <button class="btn btn-danger btn-sm" onclick="borrar({ dato.ID });">Borrar</button>
                     </td>
                </tr>
                {% endfor %}
