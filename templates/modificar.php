@@ -1,5 +1,5 @@
 
-{% extends "layout.html"%}
+{% extends "layout.php"%}
 
 {% block titulo %}
 <script src="../static/js/jquery-3.5.1.js"></script>

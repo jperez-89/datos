@@ -13,7 +13,7 @@ conex = clsConexion()
 # Ruta principal, retorna los datos que existen en la base de datos
 @app.route('/')
 def index():
-     return render_template('index.html', datos=conex.consultar())
+     return render_template('index.php', datos=conex.consultar())
 
 # Ruta de agregar datos a la db.
 @app.route('/agregar', methods=['GET', 'POST'])
@@ -28,12 +28,12 @@ def agregar():
           return redirect(url_for("index"))
      else:
           # Cuando se llama ejecuta la vista de agregar
-          return render_template('agregar.html')
+          return render_template('agregar.php')
 
 # Ruta modificar con GET, trae los datos que se quieren modificar para mostrarlos en la vista modificar
 @app.route('/modificar/<int:ide>', methods=['GET'])
 def modificar(ide):
-     return render_template('modificar.html', datos=conex.consultar(ide))
+     return render_template('modificar.php', datos=conex.consultar(ide))
 
 # Ruta modificar con POST.
 @app.route('/exec_modificar', methods=['POST'])

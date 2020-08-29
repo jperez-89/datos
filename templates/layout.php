@@ -56,9 +56,6 @@
      </main>
 
      <footer class="col-md-12"></footer>
-
-
-
 </body>
 
 </html>
