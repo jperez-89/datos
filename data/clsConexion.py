@@ -1,98 +1,107 @@
-#import pyodbc
 import psycopg2
-#import pg
 from data.clsDatos import clsDatos
 
 class clsConexion():
      # Declara las variables para la conexion con PostgreSQL
-     _servidor = 'localhost' # Estoy utilizando Docker
+     _servidor = 'localhost'
      _basedatos = 'DatosPython'
      _usuario = 'postgres'
      _contra = 'Vsmora1989'
-     
-     # Declara las variables para la conexion con SQL Server
-     # _servidor = 'localhost,1433' # Estoy utilizando Docker
-     # _basedatos = 'datos'
-     # _usuario = 'jperez'
-     # _contra = 'Vsmora1989'
-
-     def __init__(self):
-          pass
+     _puerto = '5432'
 
      def _conectar(self):
           try:
                #Conexion con PostgreSQL
-               _conex = psycopg2.connect(host=self._servidor, database=self._basedatos, user=self._usuario, password=self._contra)
-               print(_conex)
-               #print('exito conex')
-               #Conexion con Sql Server
-               # _conex = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
-               #                     'SERVER=' + self._servidor +
-               #                     ';DATABASE=' + self._basedatos +
-               #                     ';UID=' + self._usuario +
-               #                     ';PWD=' + self._contra)
+               _conex = psycopg2.connect(user=self._usuario,
+                                         password=self._contra,
+                                         host=self._servidor,
+                                         port=self._puerto,
+                                         database=self._basedatos)
           except Exception as err:
                print(err)
+
           return _conex
 
+     # METODO DE AGREGAR <-----------------------------
      def agregar(self, dato):
           estado = False
-          AuxSql = "insert into datos(texto, descripcion) values('{0}','{1}')".format(dato.Texto, dato.Descripcion)
+          AuxSql = "INSERT INTO datos(texto, descripcion) VALUES('{0}','{1}');".format(dato.Texto, dato.Descripcion)
           try:
                _conex = self._conectar()
                with _conex.cursor() as cursor:
                     cursor.execute(AuxSql)
+                    _conex.commit()
+                    estado = True
 
-               _conex.close()
-               estado = True
           except Exception as err:
                print(err)
+
+          finally:
+               cursor.close()
+               _conex.close()
+
           return estado
 
+     # METODO DE EDITAR <-----------------------------
      def editar(self, dato):
           estado = False
-          AuxSql = "update datos set texto = '{1}', descripcion = '{2}' where id = {0}".format(dato.ID, dato.Texto, dato.Descripcion)
+          AuxSql = "UPDATE datos SET texto = '{1}', descripcion = '{2}' WHERE id = {0}".format(dato.ID, dato.Texto, dato.Descripcion)
           try:
                _conex = self._conectar()
                with _conex.cursor() as cursor:
                     cursor.execute(AuxSql)
+                    _conex.commit()
+                    estado = True
 
-               _conex.close()
-               estado = True
           except Exception as err:
                print(err)
+
+          finally:
+               cursor.close()
+               _conex.close()
+
           return estado
 
+      # METODO DE BORRAR <-----------------------------
      def borrar(self, ide):
           estado = False
-          AuxSql = "delete datos where id = {0}".format(ide)
+          AuxSql = "DELETE FROM datos WHERE id = {0}".format(ide)
           try:
                _conex = self._conectar()
                with _conex.cursor() as cursor:
                     cursor.execute(AuxSql)
+                    _conex.commit()
+                    estado = True
 
-               _conex.close()
-               estado = True
           except Exception as err:
                print(err)
+
+          finally:
+               cursor.close()
+               _conex.close()
+
           return estado
 
+     # METODO DE CONSULTAR <-----------------------------
      def consultar(self, ide=None):
           data = ''
           salida = []
-
           try:
                _conex = self._conectar()
                with _conex.cursor() as cursor:
                     if ide == None:
-                         cursor.execute("Select * from datos")
+                         cursor.execute("SELECT * FROM datos")
                     else:
-                         cursor.execute("Select * from datos where id = {0}".format(ide))
-                         
+                         cursor.execute("SELECT * FROM datos WHERE id = {0}".format(ide))
+
                     data = cursor.fetchall()
-                    _conex.close()
+
           except Exception as err:
                print(err)
+
+          finally:
+               cursor.close()
+               _conex.close()
 
           for tupla in data:
                salida.append(clsDatos(tupla[0], tupla[1], tupla[2]))
