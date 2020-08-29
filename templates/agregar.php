@@ -1,70 +1,48 @@
 {% extends "layout.php"%}
 
 {% block titulo %}
-<script>
-     $(document).ready(function() {
-          $('#tabla').DataTable();
-     });
+<!-- <script src="../static/js/jquery-3.5.1.js"></script> -->
+<!-- <script src="../static/js/agregarRegistro.js"></script> -->
+<script src="{{url_for('static', filename='js/jquery-3.5.1.js')}}"></script>
+<script src="{{url_for('static', filename='js/agregarRegistro.js')}}"></script>
 
-     function modificar(ide) {
-          window.location.href = "/modificar/" + ide;
-     }
-
-     function borrar(ide) {
-          window.location.href = "/exec_eliminar/" + ide;
-     }
-</script>
-<title>Hecho con Flask</title>
+<title>Agregar datos con Flask</title>
 {% endblock %}
 
 {% block contenido %}
-{% with messages = get_flashed_messages()  %}
-{% if messages %}
-{% for message in messages %}
-<div style="background-color: #A3CB38;" class="text-white mt-2 alert alert-dismissible fade show" role="alert">
-     <strong>{{ message }}</strong>
-     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-     </button>
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
 
+<div class="container w-50 mt-3">
+     <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+               <div class="card">
+                    <div class="card-header text-center text-uppercase">
+                         <h3>Agregando nuevo registro con Flask</h3>
+                    </div>
+                    <div class="card-body">
+                         <form class="form" action="{{url_for('agregar')}}" method="POST">
+                              <!-- <form class="form" action=""> -->
+                              <div class="from-group row mb-1">
+                                   <label for="txtTexto" class="col-sm-3 col-form-label"><strong>Texto</strong></label>
+                                   <div class="col-sm-9">
+                                        <input type="text" id="txtTexto" name="txtTexto" class="form-control" required>
+                                   </div>
+                              </div>
+                              <div class="from-group row">
+                                   <label for="txtDescrip" class="col-sm-3 col-form-label"><strong>Descripción</strong></label>
+                                   <div class="col-sm-9">
+                                        <input type="text" id="txtDescrip" name="txtDescrip" class="form-control" required>
+                                   </div>
+                              </div>
 
-<div class="card card-header">
-     <div style="background-color: #006266;" class="mb-3 ">
-          <div class="form-row m-2 text-center align-items-center">
-               <div class="col-md-10">
-                    <h3 class="text-white float-left text-uppercase">Control de datos con Flask</h3>
-               </div>
-               <div class="col-md-2">
-                    <a style="background-color: #1B1464;" class="h-100 border-0 btn btn-primary btn-sm p-2" href="{{ url_for('agregar') }}">Nuevo Dato</a>
+                    </div>
+                    <div class="card-footer">
+                         <button style="background-color: #1B1464;" type="submit" class="btn text-white btn-block">
+                              <h4>Agregar</h4>
+                         </button>
+                    </div>
+                    </form>
                </div>
           </div>
      </div>
-     <table id="tabla" class=" table table-sm">
-          <thead class="thead-dark">
-               <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Controles</th>
-               </tr>
-          </thead>
-          <tbody>
-               {% for dato in datos %}
-               <tr>
-                    <th scope="row">{{ dato.ID}}</th>
-                    <td>{{ dato.Texto}}</td>
-                    <td>{{ dato.Descripcion}}</td>
-                    <td>
-                         <button class="btn btn-success btn-sm" onclick="modificar({ dato.ID });">Editar</button>
-                         <button class="btn btn-danger btn-sm" onclick="borrar({ dato.ID });">Borrar</button>
-                    </td>
-               </tr>
-               {% endfor %}
-          </tbody>
-     </table>
 </div>
 {% endblock %}

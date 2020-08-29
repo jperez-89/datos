@@ -1,4 +1,4 @@
-{% extends "templates/layout.php"%}
+{% extends "layout.php"%}
 
 {% block titulo %}
 <script>
