@@ -3,11 +3,19 @@ from data.clsDatos import clsDatos
 
 class clsConexion():
      # Declara las variables para la conexion con PostgreSQL
-     _servidor = 'localhost'
-     _basedatos = 'DatosPython'
-     _usuario = 'postgres'
-     _contra = 'Vsmora1989'
+     _servidor = 'ec2-107-20-15-85.compute-1.amazonaws.com'
+     _basedatos = 'mgooiwdzbwjgav'
+     _usuario = 'mgooiwdzbwjgav'
+     _contra = '24bd3d042f755e73b4c5daf58ef1008ca4d0731c12ab89a28fd9e133abd03d67'
      _puerto = '5432'
+     
+     # _servidor = 'localhost'
+     # _basedatos = 'DatosPython'
+     # _usuario = 'postgres'
+     # _contra = 'Vsmora1989'
+     # _puerto = '5432'
+     
+     # postgres://mgooiwdzbwjgav:24bd3d042f755e73b4c5daf58ef1008ca4d0731c12ab89a28fd9e133abd03d67@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6ju6p7ghvss0v
 
      def _conectar(self):
           try:
