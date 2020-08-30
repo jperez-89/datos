@@ -3,10 +3,10 @@ from data.clsDatos import clsDatos
 
 class clsConexion():
      # Declara las variables para la conexion con PostgreSQL
-     _servidor = 'ec2-107-20-15-85.compute-1.amazonaws.com'
-     _basedatos = 'd6ju6p7ghvss0v'
-     _usuario = 'mgooiwdzbwjgav'
-     _contra = '24bd3d042f755e73b4c5daf58ef1008ca4d0731c12ab89a28fd9e133abd03d67'
+     _servidor = 'ec2-54-158-122-162.compute-1.amazonaws.com'
+     _basedatos = 'd67lgai574pj75'
+     _usuario = 'uhoewfjxxtumic'
+     _contra = '10a98148795ac97b6e98f97be49e1308126e698cdf8f6a87395cebc903a929c8'
      _puerto = '5432'
      
      # _servidor = 'localhost'
