@@ -1,0 +1,13 @@
+#---------------------------------------------------------------------
+# Impide navegar en los direcctorios del sitio
+#---------------------------------------------------------------------
+#Options All -Indexes
+
+#---------------------------------------------------------------------
+# Evita tener acceso a los archivos con las siguientes extensiones
+#---------------------------------------------------------------------
+<FilesMatch "(\.(bak|config|inc|ini|log|sh|sql)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
