@@ -40,13 +40,13 @@ class clsConexion():
                     cursor.execute(AuxSql)
                     _conex.commit()
                     estado = True
-
+               _conex.close()
           except Exception as err:
                print(err)
 
-          finally:
-               cursor.close()
-               _conex.close()
+          # finally:
+          #      cursor.close()
+          #      _conex.close()
 
           return estado
 
@@ -60,13 +60,14 @@ class clsConexion():
                     cursor.execute(AuxSql)
                     _conex.commit()
                     estado = True
+               _conex.close()
 
           except Exception as err:
                print(err)
 
-          finally:
-               cursor.close()
-               _conex.close()
+          # finally:
+          #      cursor.close()
+          #      _conex.close()
 
           return estado
 
@@ -80,13 +81,14 @@ class clsConexion():
                     cursor.execute(AuxSql)
                     _conex.commit()
                     estado = True
+               _conex.close()
 
           except Exception as err:
                print(err)
 
-          finally:
-               cursor.close()
-               _conex.close()
+          # finally:
+          #      cursor.close()
+          #      _conex.close()
 
           return estado
 
@@ -103,13 +105,14 @@ class clsConexion():
                          cursor.execute("SELECT * FROM datos WHERE id = {0}".format(ide))
 
                     data = cursor.fetchall()
+               _conex.close()
 
           except Exception as err:
                print(err)
 
-          finally:
-               cursor.close()
-               _conex.close()
+          # finally:
+               # cursor.close()
+               # _conex.close()
 
           for tupla in data:
                salida.append(clsDatos(tupla[0], tupla[1], tupla[2]))
