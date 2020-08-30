@@ -1,7 +1,7 @@
-{% extends "templates/layout.php" %}
+{% extends "layout.php" %}
 
 {% block titulo %}
-<script src="{{url_for('static', filename='static/js/index.js')}}"></script>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
 <title> Hecho con Flask </title>
 
 {% endblock %}
@@ -28,7 +28,7 @@
                     <h3 class="text-white float-left text-uppercase">Control de datos con Flask</h3>
                </div>
                <div class="col-md-2">
-                    <a style="background-color: #1B1464;" class="h-100 border-0 btn btn-primary btn-sm p-2" href="{{ url_for('templates/agregar') }}">Nuevo Dato</a>
+                    <a style="background-color: #1B1464;" class="h-100 border-0 btn btn-primary btn-sm p-2" href="{{ url_for('agregar') }}">Nuevo Dato</a>
                </div>
           </div>
      </div>
