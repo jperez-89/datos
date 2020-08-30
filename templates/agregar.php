@@ -1,8 +1,8 @@
 {% extends "layout.php"%}
 
 {% block titulo %}
-<script src="{{url_for("static", filename="js/jquery-3.5.1.js")}}"></script>
-<script src="{{url_for("static", filename="js/agregarRegistro.js")}}"></script>
+<script src="{{url_for('static', filename='js/jquery-3.5.1.js')}}"></script>
+<script src="{{url_for('static', filename='js/agregarRegistro.js')}}"></script>
 
 <title>Agregar datos con Flask</title>
 {% endblock %}
@@ -17,7 +17,7 @@
                          <h3>Agregando nuevo registro con Flask</h3>
                     </div>
                     <div class="card-body">
-                         <form class="form" action="{{url_for("agregar")}}" method="POST">
+                         <form class="form" action="{{url_for('agregar')}}" method="POST">
                               <div class="from-group row mb-1">
                                    <label for="txtTexto" class="col-sm-3 col-form-label"><strong>Texto</strong></label>
                                    <div class="col-sm-9">
