@@ -1,12 +1,10 @@
 {% extends "layout.php"%}
 
 {% block titulo %}
-<?php
-echo '<script src="{{url_for("static", filename="js/jquery-3.5.1.js")}}"></script>';
-echo '<script src="{{url_for("static", filename="js/agregarRegistro.js")}}"></script>';
+<script src="{{url_for("static", filename="js/jquery-3.5.1.js")}}"></script>
+<script src="{{url_for("static", filename="js/agregarRegistro.js")}}"></script>
 
-echo '<title>Agregar datos con Flask</title>';
-?>
+<title>Agregar datos con Flask</title>
 {% endblock %}
 
 {% block contenido %}
