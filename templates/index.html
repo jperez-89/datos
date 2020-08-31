@@ -1,27 +1,7 @@
-{% extends "layout.php" %}
+{% extends "layout.html" %}
 
 {% block titulo %}
 <script src="{{url_for('static', filename='js/index.js')}}"></script>
-
-<!-- <script>
-     $(document).ready(function() {
-          $("#tabla").DataTable();
-     });
-
-     function
-     modificar(ide) {
-          window.location.href =
-               "/modificar/" +
-               ide;
-     }
-
-     function
-     borrar(ide) {
-          window.location.href =
-               "/exec_eliminar/" +
-               ide;
-     };
-</script> -->
 <title> Hecho con Flask </title>
 
 {% endblock %}
