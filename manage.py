@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # class clsConexion():
      # Declara las variables para la conexion con PostgreSQL
-_servidor = 'ec2-54-158-122-162.compute-1.amazonaws.com'
+_servidor = 'ec2-34-233-131-94.compute-1.amazonaws.com'
 _basedatos = 'd67lgai574pj75'
 _usuario = 'uhoewfjxxtumic'
 _contra = '10a98148795ac97b6e98f97be49e1308126e698cdf8f6a87395cebc903a929c8'
